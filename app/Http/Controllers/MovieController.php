@@ -62,13 +62,14 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        $attributes = $requet->all();
+        $data = $request->all();
 
-        $request->hasFile('thumbnail') &&
-            $attributes['thumbnail'] =
-            $request->thumbnail->store('thumbnails', 'public');
+        if ($request->hasFile('thumbnail')) 
+            $data['thumbnail'] = $request->thumbnail->store('thumbnails', 'public');
 
-        $movie->update($attributes);
+        $movie->update($data);
+
+        return new MovieResource($movie);
     }
 
     /**

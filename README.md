@@ -9,6 +9,6 @@ Uma API Rest de filmes para aprender novas funcionalidades do Laravel.
 -   [x] Criar o controller.
 -   [x] Adicionar endpoint para criar filmes.
 -   [x] Adicionar endpoint para obter filmes.
--   [ ] Adicionar endpoint para atualizar filmes.
+-   [x] Adicionar endpoint para atualizar filmes.
 -   [x] Adicionar endpoint para deletar filmes.
 -   [ ] Finalizar
