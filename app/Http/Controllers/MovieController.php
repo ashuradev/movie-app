@@ -69,5 +69,9 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Movie $movie)
-    { }
+    {
+        $movie->delete();
+
+        return ['message' => 'Movie is deleted with successfully.'];
+    }
 }
