@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMovieRequest;
+use App\Http\Requests\UpdateMovieRequest;
 use App\Http\Resources\MovieResource;
 use App\Movie;
 use Illuminate\Http\Request;
@@ -59,8 +60,16 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
-    { }
+    public function update(UpdateMovieRequest $request, Movie $movie)
+    {
+        $attributes = $requet->all();
+
+        $request->hasFile('thumbnail') &&
+            $attributes['thumbnail'] =
+            $request->thumbnail->store('thumbnails', 'public');
+
+        $movie->update($attributes);
+    }
 
     /**
      * Remove the specified resource from storage.
