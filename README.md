@@ -8,7 +8,7 @@ Uma API Rest de filmes.
 -   [x] Criar os models e migrations.
 -   [x] Criar o controller.
 -   [x] Adicionar endpoint para criar filmes.
--   [ ] Adicionar endpoint para obter filmes.
+-   [x] Adicionar endpoint para obter filmes.
 -   [ ] Adicionar endpoint para atualizar filmes.
 -   [ ] Adicionar endpoint para deletar filmes.
 -   [ ] Finalizar

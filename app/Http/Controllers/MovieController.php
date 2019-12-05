@@ -6,18 +6,20 @@ use App\Http\Requests\CreateMovieRequest;
 use App\Http\Resources\MovieResource;
 use App\Movie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return "kk";
+        return MovieResource::collection(
+            Movie::paginate(15)
+        );
     }
 
     /**
