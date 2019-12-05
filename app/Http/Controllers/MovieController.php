@@ -62,18 +62,19 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        $data = $request->all();
-
-        if ($request->hasFile('thumbnail')) 
-            $data['thumbnail'] = $request->thumbnail->store('thumbnails', 'public');
-
-        $movie->update($data);
+        $movie->update([
+            'title' => $request->input('title', $movie->title),
+            'year' => $request->input('year', $movie->year),
+            'thumbnail' => $request->hasFile('thumbnail') 
+                            ? $request->thumbnail->store('thumbnails', 'public')
+                            : $movie->thumbnail
+        ]);
 
         return new MovieResource($movie);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource fr om storage.
      *
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
