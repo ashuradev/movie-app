@@ -19,7 +19,7 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         return MovieResource::collection(
-            Movie::paginate(15)
+            Movie::all()
         );
     }
 
@@ -62,9 +62,11 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
+        dd('kkeameen');
+
         $movie->update([
-            'title' => $request->input('title', $movie->title),
-            'year' => $request->input('year', $movie->year),
+            'title' => $request->get('title', $movie->title),
+            'year' => $request->get('year', $movie->year),
             'thumbnail' => $request->hasFile('thumbnail') 
                             ? $request->thumbnail->store('thumbnails', 'public')
                             : $movie->thumbnail
