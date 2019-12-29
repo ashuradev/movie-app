@@ -7,7 +7,7 @@ export const Types = {
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.FETCH_SUCCESS:
+    case Types.FETCH_REQUEST:
       return [...state, ...action.payload];
 
     default:
