@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
 use App\Http\Resources\MovieResource;
 use App\Movie;
 use Illuminate\Http\Request;
@@ -32,13 +31,7 @@ class MovieController extends Controller
     public function store(CreateMovieRequest $request)
     {
         return new MovieResource(
-            Movie::create([
-                'title' => $request->title,
-                'year' => $request->year,
-                'thumbnail' => basename(
-                    $request->thumbnail->store('thumbnails', 'public')
-                )
-            ])
+            Movie::create($request->all())
         );
     }
 
@@ -60,17 +53,9 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovieRequest $request, Movie $movie)
+    public function update(Request $request, Movie $movie)
     {
-        dd('kkeameen');
-
-        $movie->update([
-            'title' => $request->get('title', $movie->title),
-            'year' => $request->get('year', $movie->year),
-            'thumbnail' => $request->hasFile('thumbnail') 
-                            ? $request->thumbnail->store('thumbnails', 'public')
-                            : $movie->thumbnail
-        ]);
+        $movie->update($request->all());
 
         return new MovieResource($movie);
     }

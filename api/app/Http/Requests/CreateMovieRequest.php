@@ -26,7 +26,7 @@ class CreateMovieRequest extends FormRequest
         return [
             'title' => 'required',
             'year' => 'required',
-            'thumbnail' => 'required|file|mimes:png,jpeg,bmp'
+            'thumbnail' => 'required'
         ];
     }
 }
