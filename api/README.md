@@ -1,6 +1,6 @@
-# movie-app
+# api
 
-Uma API Rest de filmes para aprender novas funcionalidades do Laravel.
+API Rest de filmes para aprender novas funcionalidades do Laravel.
 
 # Tarefas
 
@@ -11,4 +11,4 @@ Uma API Rest de filmes para aprender novas funcionalidades do Laravel.
 -   [x] Adicionar endpoint para obter filmes.
 -   [x] Adicionar endpoint para atualizar filmes.
 -   [x] Adicionar endpoint para deletar filmes.
--   [ ] Finalizar
+-   [x] Finalizar
