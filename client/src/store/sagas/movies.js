@@ -1,8 +1,10 @@
-import { takeLatest, delay, call } from 'redux-saga/effects';
+import { takeLatest, delay, call, put } from 'redux-saga/effects';
 
-import { Types as MoviesTypes, fetchSuccess } from '../ducks/movies';
+import { Types, fetchSuccess } from '../ducks/movies';
 
-const debounceTime = 500; /* In milliseconds */
+import api from '../../services/api';
+
+const debounceTime = 500;
 
 function* fetchMovies() {
   yield delay(debounceTime);
@@ -10,9 +12,9 @@ function* fetchMovies() {
   try {
     const response = yield call(api.get, '/movies');
 
-    yield put(fetchSuccess(response.data));
-  } catch {
-    yield call(alert, 'Falha ao carregar os filmes :(');
+    yield put(fetchSuccess(response.data.data));
+  } catch (e) {
+    yield call(alert, `Falha ao carregar os filmes (${e.message}).`);
   }
 }
 

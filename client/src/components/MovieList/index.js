@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchRequest } from '../../store/ducks/movies';
 
+import Movie from '../Movie';
+
 import { Wrapper } from './styles';
 
 const MovieList = () => {
@@ -12,12 +14,12 @@ const MovieList = () => {
 
   useEffect(() => {
     dispatch(fetchRequest());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Wrapper>
       {movies.map(movie => (
-        <Movie movie={movie} />
+        <Movie movie={movie} key={movie.id} />
       ))}
     </Wrapper>
   );

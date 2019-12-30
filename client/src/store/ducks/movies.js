@@ -7,8 +7,8 @@ export const Types = {
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.FETCH_REQUEST:
-      return [...state, ...action.payload];
+    case Types.FETCH_SUCCESS:
+      return [...state, ...action.payload.movies];
 
     default:
       return state;
@@ -22,5 +22,5 @@ export const fetchRequest = search => ({
 
 export const fetchSuccess = movies => ({
   type: Types.FETCH_SUCCESS,
-  payload: [movies]
+  payload: { movies }
 });
