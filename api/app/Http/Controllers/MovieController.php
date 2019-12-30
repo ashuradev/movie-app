@@ -18,7 +18,11 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         return MovieResource::collection(
-            Movie::all()
+            Movie::where(
+                'title',
+                'LIKE',
+                '%' . $request->query('search') . '%'
+            )->get()
         );
     }
 
