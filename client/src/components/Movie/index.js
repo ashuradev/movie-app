@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Wrapper, Thumbnail, Title } from './styles';
+import { Wrapper, Thumbnail, Title, Year } from './styles';
 
 const Movie = ({ movie }) => (
   <Wrapper>
     <Title>{movie.title}</Title>
     <Thumbnail src={movie.thumbnail} />
-    <p>{movie.year}</p>
+    <Year>{movie.year}</Year>
   </Wrapper>
 );
 
