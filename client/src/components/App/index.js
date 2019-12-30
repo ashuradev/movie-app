@@ -7,8 +7,9 @@ import GlobalStyle from './../../styles/global';
 
 import Header from './../Header';
 import MovieList from './../MovieList';
+import Search from './../Search';
 
-import { Wrapper } from './styles';
+import { Wrapper, Intro } from './styles';
 
 const App = () => (
   <Provider store={store}>
@@ -16,6 +17,8 @@ const App = () => (
 
     <Wrapper>
       <Header />
+      <Search />
+      <Intro>Compartilhando alguns de nossos filmes favoritos</Intro>
       <MovieList />
     </Wrapper>
   </Provider>
