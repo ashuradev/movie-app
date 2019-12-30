@@ -4,13 +4,13 @@ import { Types, fetchSuccess } from '../ducks/movies';
 
 import api from '../../services/api';
 
-const debounceTime = 500;
+const DEBOUNCE_TIME = 500;
 
-function* fetchMovies() {
-  yield delay(debounceTime);
+function* fetchMovies({ payload: { search } }) {
+  yield delay(DEBOUNCE_TIME);
 
   try {
-    const response = yield call(api.get, '/movies');
+    const response = yield call(api.get, `/movies?search=${search}`);
 
     yield put(fetchSuccess(response.data.data));
   } catch (e) {
